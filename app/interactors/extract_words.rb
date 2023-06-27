@@ -6,7 +6,7 @@ class ExtractWords
   delegate :file_text, to: :context
 
   def call
-    context.words = words
+    context.words = words.compact
   end
 
   private
@@ -20,10 +20,10 @@ class ExtractWords
   end
 
   def split_text
-    file_text.split("\n")
+    context.split_text || file_text.split("\n")
   end
 
   def extracted_word(line)
-    line.gsub(EXTRACT_WORDS_REGEXP, '\2')
+    line.strip.gsub(EXTRACT_WORDS_REGEXP, '\2')
   end
 end

@@ -17,7 +17,18 @@ require "./app/interactors/set_dictionary"
 
 require "./app/interactors/open"
 
+
+print "Paste your text then press Enter and ^D: \n\n"
+
+# $/ = "END"
+# user_input = STDIN.gets
+
+user_input = $stdin.readlines
+
+print "\n\n"
+
 print "Choose a dictionary Macmillan or Cambridge [Macmillan macmillan M m Cambridge cambridge C c] (default Macmillan): "
 input_dictionary = gets.chomp
 
-Open.call(input_dictionary: input_dictionary)
+
+Open.call(split_text: user_input, input_dictionary: input_dictionary)
