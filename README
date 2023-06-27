@@ -1,0 +1,14 @@
+# It's a text opener
+
+## Getting Started
+1. Clone repository
+
+```bash
+git clone git://github.com/NigmatullinaRamilya/english-words.git
+```
+
+2. Run setup script
+
+```bash
+bin/setup
+```

@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+
+Bundler.require
+
+require "interactor"
+require "pry"
+
+
+print "Dictionary [Macmillan or m or M / Cambridge or c or C] (default m): "
+input_data = gets.chomp
+is_cambridge = %w[Cambridge c C].include?(input_data)
+
+input_data = File.open("./in.txt", "r").read
+
+split_text = input_data.split("\n")
+commands =[]
+split_text.each do |phrase|
+  w = phrase.split(" —").first
+  w1 = w.split(". ").last.gsub(" ", "-")
+  if is_cambridge
+    commands << "open 'https://dictionary.cambridge.org/dictionary/english/#{w1}'"
+  else
+    commands << "open 'https://www.macmillandictionary.com/dictionary/british/#{w1}'"
+  end
+end
+
+commands.each { |c| system c }
