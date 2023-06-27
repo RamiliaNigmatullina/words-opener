@@ -16,8 +16,7 @@ bin/setup
 
 ## Instructions for using the application
 ### Option 1
-1. Paste your words to the `in.txt` file in the root of the application, e.g.:
-
+1. Paste your words to the `in.txt` file in the root of the application, e.g. [IELTS vocabulary](https://engexam.info/ielts-reading-practice-tests/ielts-reading-practice-test-1/5/#ielts-vocab-1):
 ```
 n. prominence — fame, outstanding position
 lat. lingua franca — common language of communication for people who have different mother tongues. English is the worldwide recognized lingua franca.
@@ -35,7 +34,7 @@ conj. whereas — but on the other hand
 
 ### Option 2
 1. Run the application by typing `bin/run`.
-2. Paste your text to the console, e.g.:
+2. Paste your text to the console, e.g. [IELTS vocabulary](https://engexam.info/ielts-reading-practice-tests/ielts-reading-practice-test-1/5/#ielts-vocab-1):
 ```
 n. prominence — fame, outstanding position
 lat. lingua franca — common language of communication for people who have different mother tongues. English is the worldwide recognized lingua franca.
