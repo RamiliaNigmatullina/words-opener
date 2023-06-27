@@ -4,26 +4,20 @@ require "bundler/setup"
 
 Bundler.require
 
+require "active_model"
 require "interactor"
 require "pry"
+require "byebug"
 
+require "./app/interactors/build_commands"
+require "./app/interactors/execute_commands"
+require "./app/interactors/extract_words"
+require "./app/interactors/read_file"
+require "./app/interactors/set_dictionary"
 
-print "Dictionary [Macmillan or m or M / Cambridge or c or C] (default m): "
-input_data = gets.chomp
-is_cambridge = %w[Cambridge c C].include?(input_data)
+require "./app/interactors/open"
 
-input_data = File.open("./in.txt", "r").read
+print "Choose a dictionary Macmillan or Cambridge [Macmillan macmillan M m Cambridge cambridge C c] (default Macmillan): "
+input_dictionary = gets.chomp
 
-split_text = input_data.split("\n")
-commands =[]
-split_text.each do |phrase|
-  w = phrase.split(" —").first
-  w1 = w.split(". ").last.gsub(" ", "-")
-  if is_cambridge
-    commands << "open 'https://dictionary.cambridge.org/dictionary/english/#{w1}'"
-  else
-    commands << "open 'https://www.macmillandictionary.com/dictionary/british/#{w1}'"
-  end
-end
-
-commands.each { |c| system c }
+Open.call(input_dictionary: input_dictionary)
