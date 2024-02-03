@@ -10,6 +10,6 @@ class SetDictionary
   private
 
   def dictionary
-    %w[Cambridge cambridge C c].include?(input_dictionary) ? "cambridge" : "macmillan"
+    %w[Macmillan macmillan M m].include?(input_dictionary) ? "macmillan" : "cambridge"
   end
 end

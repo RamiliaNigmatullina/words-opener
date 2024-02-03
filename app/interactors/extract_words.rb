@@ -20,7 +20,11 @@ class ExtractWords
   end
 
   def split_text
-    context.split_text || file_text.split("\n")
+    split_text_provided? ? context.split_text : file_text.split("\n")
+  end
+
+  def split_text_provided?
+    context.split_text.map { |s| s.gsub("\n", "") }.any?(&:present?)
   end
 
   def extracted_word(line)
