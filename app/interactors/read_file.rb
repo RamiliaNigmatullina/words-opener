@@ -1,8 +1,6 @@
 class ReadFile
   include Interactor
 
-  delegate :initial_file, to: :context
-
   def call
     context.file_text = file.read
   end

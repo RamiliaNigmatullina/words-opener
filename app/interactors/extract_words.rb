@@ -1,7 +1,7 @@
 class ExtractWords
   include Interactor
 
-  EXTRACT_WORDS_REGEXP = /^(.+?\.\s)?(.+?)\s(-|—|—).*$/.freeze
+  EXTRACT_WORDS_REGEXP = /^(.+?\.\s)?(.+?)\s(-|—|—).*$/
 
   delegate :file_text, to: :context
 
@@ -20,11 +20,11 @@ class ExtractWords
   end
 
   def split_text
-    split_text_provided? ? context.split_text : file_text.split("\n")
+    user_input_provided? ? context.user_input : file_text.split("\n")
   end
 
-  def split_text_provided?
-    context.split_text.map { |s| s.gsub("\n", "") }.any?(&:present?)
+  def user_input_provided?
+    context.user_input.map { |s| s.gsub("\n", "") }.any?(&:present?)
   end
 
   def extracted_word(line)

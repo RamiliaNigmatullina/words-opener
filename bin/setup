@@ -2,5 +2,6 @@
 
 cd "$(dirname $0)"/..
 
-bundle check --path .bundle > /dev/null 2>&1 ||
-  bundle install --path=.bundle
+bundle config set --local path '.bundle'
+bundle check > /dev/null 2>&1 ||
+  bundle install

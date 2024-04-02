@@ -1,33 +1,62 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
+Bundler.require(:default)
 
-Bundler.require
-
-require "interactor"
-require "pry"
+require "active_support/core_ext/module/delegation"
+require "active_support/core_ext/object/blank"
 require "byebug"
+require "interactor"
 
-require "./app/interactors/build_commands"
-require "./app/interactors/execute_commands"
-require "./app/interactors/extract_words"
-require "./app/interactors/read_file"
-require "./app/interactors/set_dictionary"
+require_relative "../app/interactors/build_commands"
+require_relative "../app/interactors/execute_commands"
+require_relative "../app/interactors/extract_words"
+require_relative "../app/interactors/read_file"
+require_relative "../app/interactors/set_dictionary"
+require_relative "../app/interactors/open"
 
-require "./app/interactors/open"
+DEFAULT_FILE = "in.txt"
 
+def prompt_for_text
+  puts "Enter your text and press Enter (Ctrl+D to finish):"
+  
+  # Returns an array of strings
+  # Waits for user input until the Ctrl+D combination is pressed
+  $stdin.readlines
+end
 
-print "Paste your text then press Enter and ^D: \n\n"
+def prompt_for_file
+  puts "Enter the path to the file containing the text (default '#{DEFAULT_FILE}'): "
 
-# $/ = "END"
-# user_input = STDIN.gets
+  # Reads one line from the standard input
+  # The chomp method removes the newline character (\n) from the end of the string
+  file_path = $stdin.gets.chomp.presence || DEFAULT_FILE
 
-user_input = $stdin.readlines
+  # Opens the file and reads its content, splitting it into an array of lines,
+  # where each element of the array represents one line from the file.
+  File.readlines(file_path)
 
-# print "\n\n"
-#
-# print "Choose a dictionary Cambridge or Macmillan [Cambridge cambridge C c Macmillan macmillan M m] (default Cambridge): "
-# input_dictionary = gets.chomp
+  # Returns the content of the file as a single string.
+  # Suitable for small files.
+  # File.open(<file_name>, "r").read
+end
 
+def user_input
+  case ARGV[0]
+  when "terminal"
+    prompt_for_text
+  when "file"
+    prompt_for_file
+  else
+    puts "Usage: bin/open [terminal|file]"
+    exit(1)
+  end
+end
 
-Open.call(split_text: user_input, input_dictionary: "c")
+def main
+  Open.call(user_input: user_input, input_dictionary: "c")
+end
+
+if __FILE__ == $PROGRAM_NAME
+  main
+end

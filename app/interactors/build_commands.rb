@@ -1,8 +1,8 @@
 class BuildCommands
   include Interactor
 
-  CAMBRIDGE_DICTIONARY_URL = "https://dictionary.cambridge.org/dictionary/english/%{word}".freeze
-  MACMILLAN_DICTIONARY_URL = "https://www.macmillandictionary.com/dictionary/british/%{word}".freeze
+  CAMBRIDGE_DICTIONARY_URL = "https://dictionary.cambridge.org/dictionary/english/%{word}"
+  MACMILLAN_DICTIONARY_URL = "https://www.macmillandictionary.com/dictionary/british/%{word}"
   COMMAND = "open '%{url}'"
 
   delegate :words, :dictionary, to: :context
@@ -14,13 +14,10 @@ class BuildCommands
   private
 
   def commands
-    [].tap do |commands|
-      words.each do |word|
-        url = url_const % { word: word }
-        command = COMMAND % { url: url }
+    words.each_with_object([]) do |word, commands|
+      url = url_const % { word: word }
 
-        commands << command
-      end
+      commands << COMMAND % { url: url }
     end
   end
 
