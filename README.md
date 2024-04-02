@@ -26,14 +26,14 @@ adv. hence — because of this, for this reason
 n. treatise — a scientific work or paper
 conj. whereas — but on the other hand
 ```
-2. Run the application by typing `bin/run`
+2. Run the application by typing `bin/open`
 3. Choose a dictionary
 4. Press Enter
 5. Check the browser – the links should open automatically.
 
 
 ### Option 2
-1. Run the application by typing `bin/run`.
+1. Run the application by typing `bin/open`.
 2. Paste your text to the console, e.g. [IELTS vocabulary](https://engexam.info/ielts-reading-practice-tests/ielts-reading-practice-test-1/5/#ielts-vocab-1):
 ```
 n. prominence — fame, outstanding position
