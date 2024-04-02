@@ -2,7 +2,6 @@ class BuildCommands
   include Interactor
 
   CAMBRIDGE_DICTIONARY_URL = "https://dictionary.cambridge.org/dictionary/english/%{word}"
-  MACMILLAN_DICTIONARY_URL = "https://www.macmillandictionary.com/dictionary/british/%{word}"
   COMMAND = "open '%{url}'"
 
   delegate :words, :dictionary, to: :context
@@ -15,13 +14,9 @@ class BuildCommands
 
   def commands
     words.each_with_object([]) do |word, commands|
-      url = url_const % { word: word }
+      url = CAMBRIDGE_DICTIONARY_URL % { word: word }
 
       commands << COMMAND % { url: url }
     end
-  end
-
-  def url_const
-    Kernel.const_get("BuildCommands::#{dictionary.upcase}_DICTIONARY_URL")
   end
 end

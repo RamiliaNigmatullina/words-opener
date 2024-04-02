@@ -1,9 +1,7 @@
 class Open
   include Interactor::Organizer
 
-  organize SetDictionary,
-    ReadFile,
-    ExtractWords,
+  organize ExtractWords,
     BuildCommands,
     ExecuteCommands
 end

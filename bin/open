@@ -11,8 +11,6 @@ require "interactor"
 require_relative "../app/interactors/build_commands"
 require_relative "../app/interactors/execute_commands"
 require_relative "../app/interactors/extract_words"
-require_relative "../app/interactors/read_file"
-require_relative "../app/interactors/set_dictionary"
 require_relative "../app/interactors/open"
 
 DEFAULT_FILE = "in.txt"
@@ -54,7 +52,7 @@ def user_input
 end
 
 def main
-  Open.call(user_input: user_input, input_dictionary: "c")
+  Open.call(user_input: user_input)
 end
 
 if __FILE__ == $PROGRAM_NAME
