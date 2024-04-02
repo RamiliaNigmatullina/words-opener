@@ -13,7 +13,7 @@ require_relative "../app/interactors/execute_commands"
 require_relative "../app/interactors/extract_words"
 require_relative "../app/interactors/open"
 
-DEFAULT_FILE = "in.txt"
+DEFAULT_FILE = "vocabulary/in.txt"
 
 def prompt_for_text
   puts "Enter your text and press Enter (Ctrl+D to finish):"
