@@ -16,6 +16,6 @@ class ExtractWords
   end
 
   def extracted_word(line)
-    line.strip.gsub(EXTRACT_WORDS_REGEXP, '\2')
+    line.strip.gsub(EXTRACT_WORDS_REGEXP, '\2').presence
   end
 end
