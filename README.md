@@ -7,7 +7,7 @@ This application facilitates searching for multiple English words or phrases in 
 1. Clone repository
 
 ```bash
-git clone git://github.com/NigmatullinaRamilya/words-opener.git
+git clone git://github.com/NigmatullinaRamilya/words-opener.git && cd words-opener
 ```
 
 2. Run setup script
