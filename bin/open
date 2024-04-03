@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+require "optparse"
 require "bundler/setup"
 Bundler.require(:default)
 
@@ -16,9 +17,7 @@ def prompt_for_text
   $stdin.readlines
 end
 
-def read_file
-  file_path = ARGV[1].presence || DEFAULT_FILE
-
+def read_file(file_path)
   # Opens the file and reads its content, splitting it into an array of lines,
   # where each element of the array represents one line from the file.
   File.readlines(file_path)
@@ -29,19 +28,41 @@ def read_file
 end
 
 def user_input
-  case ARGV[0]
-  when "terminal"
-    prompt_for_text
-  when "file"
-    read_file
-  else
-    puts "Usage: bin/open [terminal|file <file_name>]"
-    exit(1)
-  end
+  options = {}
+
+  OptionParser.new do |opts|
+    opts.banner = "Usage: bin/open [options]"
+
+    opts.on("-t", "--terminal", "Read text from terminal") do |terminal|
+      options[:terminal] = terminal
+    end
+
+    opts.on("-f [FILE_PATH]", "--file [FILE_PATH]", "Read text from file") do |file_path|
+      options[:file] = file_path || DEFAULT_FILE
+    end
+
+    opts.on("-h", "--help", "Prints this help") do
+      puts opts
+      exit
+    end
+  end.parse!
+
+  options
 end
 
 def main
-  Open.call(user_input:)
+  options = user_input
+
+  if options[:terminal]
+    text = prompt_for_text
+  elsif options[:file]
+    text = read_file(options[:file])
+  else
+    puts "Usage: bin/open [options]"
+    exit(1)
+  end
+
+  Open.call(user_input: text)
 end
 
 main if __FILE__ == $PROGRAM_NAME
