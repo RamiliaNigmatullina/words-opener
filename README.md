@@ -1,5 +1,8 @@
 # Words opener
 
+This application facilitates searching for multiple English words or phrases in the [Cambridge Dictionary](link - https://dictionary.cambridge.org) at once. It allows users to quickly access definitions, usage examples, or listen to pronunciations for a comprehensive understanding of the queried terms.
+
+
 ## Getting Started
 1. Clone repository
 
