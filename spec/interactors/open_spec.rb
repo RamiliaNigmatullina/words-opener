@@ -4,7 +4,8 @@ RSpec.describe Open do
   let(:expected_interactors) do
     [
       ExtractWords,
-      BuildCommands
+      BuildCommands,
+      ExecuteCommands
     ]
   end
 

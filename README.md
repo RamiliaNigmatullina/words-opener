@@ -16,6 +16,11 @@ git clone git://github.com/NigmatullinaRamilya/words-opener.git
 bin/setup
 ```
 
+2. Make sure that tests pass
+
+```bash
+bin/rspec
+```
 
 ## Instructions for using the application
 0. Prepare a list of words, e.g. [IELTS vocabulary](https://engexam.info/ielts-reading-practice-tests/ielts-reading-practice-test-1/5/#ielts-vocab-1)
@@ -44,9 +49,10 @@ conj. whereas — but on the other hand
 4. Press ^D
 5. Check the browser – the links should open automatically
 
-## Testing
-To run the tests, use the command:
+## Scripts
 
-```bash
-bin/rspec
-```
+* `bin/open [terminal|file <file_name>]` - runs the application
+* `bin/quality` - runs rubocop and tests using RSpec
+* `bin/rspec` - runs tests using RSpec
+* `bin/rubocop` - ensures code quality by running RuboCop
+* `bin/setup` - setups required gems
