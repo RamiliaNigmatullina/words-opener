@@ -16,7 +16,7 @@ git clone git://github.com/NigmatullinaRamilya/words-opener.git
 bin/setup
 ```
 
-2. Make sure that tests pass
+3. Make sure that tests pass
 
 ```bash
 bin/rspec
