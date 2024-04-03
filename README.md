@@ -58,3 +58,11 @@ conj. whereas — but on the other hand
 * `bin/rspec` - runs tests using RSpec
 * `bin/rubocop` - ensures code quality by running RuboCop
 * `bin/setup` - setups required gems
+
+## Troubleshooting
+
+If you encounter the error `permission denied: bin/...` while trying to execute any file in the `bin/` folder, you can fix it by granting executable permissions to this file. You can do this by running the following command in your terminal:
+
+```bash
+chmod +x bin/open
+```
