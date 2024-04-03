@@ -16,3 +16,6 @@ Metrics/BlockLength:
   Max: 100
   Exclude:
     - spec/**/*
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
