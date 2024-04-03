@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Open do
   let(:expected_interactors) do
     [

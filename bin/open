@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require "bundler/setup"
 Bundler.require(:default)
@@ -9,7 +10,7 @@ DEFAULT_FILE = "vocabulary/in.txt"
 
 def prompt_for_text
   puts "Enter your text and press Enter (Ctrl+D to finish):"
-  
+
   # Returns an array of strings
   # Waits for user input until the Ctrl+D combination is pressed
   $stdin.readlines
@@ -40,9 +41,7 @@ def user_input
 end
 
 def main
-  Open.call(user_input: user_input)
+  Open.call(user_input:)
 end
 
-if __FILE__ == $PROGRAM_NAME
-  main
-end
+main if __FILE__ == $PROGRAM_NAME

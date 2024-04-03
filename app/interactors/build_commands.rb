@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class BuildCommands
   include Interactor
 
-  CAMBRIDGE_DICTIONARY_URL = "https://dictionary.cambridge.org/dictionary/english/%{word}"
-  COMMAND = "open '%{url}'"
+  CAMBRIDGE_DICTIONARY_URL = "https://dictionary.cambridge.org/dictionary/english/%<word>s"
+  COMMAND = "open '%<url>s'"
 
   delegate :words, to: :context
 
@@ -16,11 +18,11 @@ class BuildCommands
     words.each_with_object([]) do |word, commands|
       url = build_url(word)
 
-      commands << COMMAND % { url: url }
+      commands << format(COMMAND, url:)
     end
   end
 
   def build_url(word)
-    CAMBRIDGE_DICTIONARY_URL % { word: word.gsub(" ", "-") }
+    format(CAMBRIDGE_DICTIONARY_URL, word: word.gsub(" ", "-"))
   end
 end

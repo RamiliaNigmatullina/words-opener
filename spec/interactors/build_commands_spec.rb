@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 RSpec.describe BuildCommands do
-  subject(:build_commands) { described_class.call(words: words) }
+  subject(:build_commands) { described_class.call(words:) }
 
   let(:words) { ["prominence", "emergent", "call a spade a spade"] }
   let(:expected_commands) do

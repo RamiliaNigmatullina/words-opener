@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 RSpec.describe ExecuteCommands do
-  subject(:extract_words) { described_class.call(commands: commands) }
+  subject(:extract_words) { described_class.call(commands:) }
 
   let(:commands) do
     [
@@ -10,7 +12,7 @@ RSpec.describe ExecuteCommands do
   end
 
   it "executes commands" do
-    expect_any_instance_of(ExecuteCommands).to receive(:system).exactly(3).times
+    expect_any_instance_of(described_class).to receive(:system).exactly(3).times
 
     extract_words
   end

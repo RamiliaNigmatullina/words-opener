@@ -1,116 +1,18 @@
-require:
-  - rubocop-rspec
-
 AllCops:
-  TargetRubyVersion: 2.7
-  Exclude:
-    - bin/**/*
+  TargetRubyVersion: 3.3
+  NewCops: enable
 
-Layout/EndAlignment:
-  EnforcedStyleAlignWith: variable
+require: rubocop-rspec
 
-Layout/HashAlignment:
-  EnforcedLastArgumentHashStyle: ignore_implicit
+inherit_from: .rubocop_todo.yml
 
-Layout/ParameterAlignment:
-  EnforcedStyle: with_fixed_indentation
-
-Layout/ArgumentAlignment:
-  EnforcedStyle: with_fixed_indentation
-
-Layout/ClassStructure:
-  Enabled: true
-  ExpectedOrder:
-     - module_inclusion
-     - constants
-     - association
-     - public_attribute_macros
-     - public_delegate
-     - macros
-     - public_class_methods
-     - initializer
-     - public_methods
-     - protected_attribute_macros
-     - protected_methods
-     - private_attribute_macros
-     - private_delegate
-     - private_methods
-
-Layout/LineLength:
-  Max: 120
-
-Metrics/BlockLength:
-  Enabled: false
-
-Metrics/ClassLength:
-  Max: 200
-
-Metrics/ModuleLength:
-  Max: 200
-
-Metrics/MethodLength:
-  Max: 20
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
 
 Style/Documentation:
   Enabled: false
 
-Style/MethodCalledOnDoEndBlock:
-  Enabled: true
-
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
-  ConsistentQuotesInMultiline: true
-
-Style/EmptyMethod:
-  EnforcedStyle: expanded
-
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Style/IfUnlessModifier:
-  Enabled: false
-
-Style/MixinGrouping:
-  EnforcedStyle: grouped
-
-Style/AutoResourceCleanup:
-  Enabled: true
-
-Style/ImplicitRuntimeError:
-  Enabled: true
-
-RSpec/MultipleExpectations:
-  Enabled: false
-
-RSpec/ExampleLength:
-  Enabled: false
-
-RSpec/RepeatedDescription:
-  Enabled: false
-
-RSpec/MessageSpies:
-  Enabled: false
-
-RSpec/ImplicitSubject:
-  Enabled: false
-
-RSpec/NestedGroups:
-  Max: 5
-
-RSpec/SharedExamples:
-  Enabled: false
-
-RSpec/SubjectStub:
-  Enabled: false
-
-RSpec/LetSetup:
-  Enabled: false
-
-RSpec/ContextWording:
-  Prefixes:
-    - when
-    - with
-    - without
-    - if
-    - and
-    - but
+Metrics/BlockLength:
+  Max: 100
+  Exclude:
+    - spec/**/*
