@@ -23,12 +23,8 @@ def prompt_for_text
   $stdin.readlines
 end
 
-def prompt_for_file
-  puts "Enter the path to the file containing the text (default '#{DEFAULT_FILE}'): "
-
-  # Reads one line from the standard input
-  # The chomp method removes the newline character (\n) from the end of the string
-  file_path = $stdin.gets.chomp.presence || DEFAULT_FILE
+def read_file
+  file_path = ARGV[1].presence || DEFAULT_FILE
 
   # Opens the file and reads its content, splitting it into an array of lines,
   # where each element of the array represents one line from the file.
@@ -44,9 +40,9 @@ def user_input
   when "terminal"
     prompt_for_text
   when "file"
-    prompt_for_file
+    read_file
   else
-    puts "Usage: bin/open [terminal|file]"
+    puts "Usage: bin/open [terminal|file <file_name>]"
     exit(1)
   end
 end

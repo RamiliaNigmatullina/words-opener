@@ -30,10 +30,8 @@ conj. whereas — but on the other hand
 ### Option 1
 1. Create a file with words, e.g. in the `vocabulary/` directory or paste words into the default file `vocabulary/in.txt`.
 2. If you are creating a file, copy its path beforehand.
-3. Run the program using the command `bin/open file`.
-4. Insert the file path; if nothing is inserted, the path to the default file will be used.
-5. Press Enter
-6. Check the browser – the links should open automatically.
+3. Run the program using the command `bin/open file <file_name>` (e.g. `bin/open file vocabulary/ielts-reading-1-section-1`); if there is no `<file_name>`, the path to the default file will be used.
+4. Check the browser – the links should open automatically.
 
 
 ### Option 2
