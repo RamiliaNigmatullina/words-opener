@@ -7,5 +7,6 @@ gem "interactor"
 
 group :development, :test do
   gem "byebug"
+  gem "rspec"
 end
 

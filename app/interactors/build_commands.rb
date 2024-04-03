@@ -4,7 +4,7 @@ class BuildCommands
   CAMBRIDGE_DICTIONARY_URL = "https://dictionary.cambridge.org/dictionary/english/%{word}"
   COMMAND = "open '%{url}'"
 
-  delegate :words, :dictionary, to: :context
+  delegate :words, to: :context
 
   def call
     context.commands = commands
@@ -14,9 +14,13 @@ class BuildCommands
 
   def commands
     words.each_with_object([]) do |word, commands|
-      url = CAMBRIDGE_DICTIONARY_URL % { word: word }
+      url = build_url(word)
 
       commands << COMMAND % { url: url }
     end
+  end
+
+  def build_url(word)
+    CAMBRIDGE_DICTIONARY_URL % { word: word.gsub(" ", "-") }
   end
 end

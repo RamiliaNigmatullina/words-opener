@@ -40,3 +40,10 @@ conj. whereas — but on the other hand
 3. Press Enter
 4. Press ^D
 5. Check the browser – the links should open automatically
+
+## Testing
+To run the tests, use the command:
+
+```bash
+bin/rspec
+```

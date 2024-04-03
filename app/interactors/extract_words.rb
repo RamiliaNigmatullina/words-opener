@@ -1,7 +1,7 @@
 class ExtractWords
   include Interactor
 
-  EXTRACT_WORDS_REGEXP = /^(.+?\.\s)?(.+?)\s(-|—|—).*$/
+  EXTRACT_WORDS_REGEXP = /^(.+?\.\s)?(.*?)\s(-|–|—)|(.+?\.\s)?(.+)$/
 
   def call
     context.words = words.compact
@@ -16,6 +16,7 @@ class ExtractWords
   end
 
   def extracted_word(line)
-    line.strip.gsub(EXTRACT_WORDS_REGEXP, '\2').presence
+    line.strip.gsub(EXTRACT_WORDS_REGEXP, '\2').presence ||
+      line.strip.gsub(EXTRACT_WORDS_REGEXP, '\5').presence
   end
 end
